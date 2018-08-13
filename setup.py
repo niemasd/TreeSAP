@@ -14,7 +14,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 setup(
     name='nihylisim',  # Required
-    version='1.0.3',  # Required
+    version='1.0.5',  # Required
     description='NiHYLiSIM: Non-Homogeneous YuLe SIMulator',  # Required
     long_description='NiHYLiSIM: Non-Homogeneous YuLe SIMulator',  # Optional
     long_description_content_type='text/plain',  # Optional (see note above)
@@ -46,6 +46,7 @@ setup(
     ],
     keywords='non homogeneous yule simulator',  # Optional
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),  # Required
+    install_requires=['scipy','treeswift'],
     extras_require={  # Optional
         'dev': ['check-manifest'],
     },
