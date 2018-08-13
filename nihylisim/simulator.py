@@ -19,10 +19,10 @@ class NHPP_first_interarrival_time(rv_continuous):
 
 # sample a non-homogeneous Yule tree with rate function L(t)
 def nonhomogeneous_yule_tree(L, end_num_leaves=None, end_time=None):
-    '''Sample a non-homogeneous Yule tree with rate function λ(t). If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.
+    '''Sample a non-homogeneous Yule tree with rate function L(t). If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.
 
     Args:
-        ``L`` (``func``): The rate function λ(t)
+        ``L`` (``func``): The rate function L(t)
 
         ``end_num_leaves`` (``int``): The final number of leaves
 

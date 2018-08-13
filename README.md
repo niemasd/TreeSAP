@@ -1,4 +1,4 @@
-# NiHYLiSIM
+# NiHYLiSIM&nbsp;&nbsp;&nbsp;[![Build Status](https://travis-ci.org/niemasd/NiHYLiSIM.svg?branch=master)](https://travis-ci.org/niemasd/NiHYLiSIM)
 NiHYLiSIM: Non-Homogeneous YuLe SIMulator
 
 ## Installation
@@ -17,7 +17,7 @@ pip install --user nihylisim
 ## Usage
 ```bash
 from nihylisim import nonhomogeneous_yule_tree
-tree = nonhomogeneous_yule_tree(lambda x: 2*x, num_leaves=100)
+tree = nonhomogeneous_yule_tree(lambda x: 2*x, end_num_leaves=100)
 print(tree.newick())
 ```
 
