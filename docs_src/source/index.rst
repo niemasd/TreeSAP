@@ -1,12 +1,12 @@
-nihylisim package
+treesap package
 =================
 
-`NiHYLiSIM <https://github.com/niemasd/NiHYLiSIM>`_ Non-Homogeneous YuLe SIMulator
+`TreeSAP <https://github.com/niemasd/TreeSAP>`_ Tree SAmpling under Phylogenetic models
 
 Module contents
 ---------------
 
-.. automodule:: nihylisim
+.. automodule:: treesap
     :members:
     :undoc-members:
     :show-inheritance:

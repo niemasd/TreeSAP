@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'NiHYLiSIM'
+project = 'TreeSAP'
 copyright = '2018, Niema Moshiri'
 author = 'Niema Moshiri'
 
@@ -106,7 +106,7 @@ html_static_path = ['.static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'NiHYLiSIMdoc'
+htmlhelp_basename = 'TreeSAPdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -133,7 +133,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'NiHYLiSIM.tex', 'NiHYLiSIM Documentation',
+    (master_doc, 'TreeSAP.tex', 'TreeSAP Documentation',
      'Niema Moshiri', 'manual'),
 ]
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'nihylisim', 'NiHYLiSIM Documentation',
+    (master_doc, 'treesap', 'TreeSAP Documentation',
      [author], 1)
 ]
 
@@ -154,8 +154,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'NiHYLiSIM', 'NiHYLiSIM Documentation',
-     author, 'NiHYLiSIM', 'One line description of project.',
+    (master_doc, 'TreeSAP', 'TreeSAP Documentation',
+     author, 'TreeSAP', 'One line description of project.',
      'Miscellaneous'),
 ]
 

@@ -13,12 +13,12 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 setup(
-    name='nihylisim',  # Required
-    version='1.0.6',  # Required
-    description='NiHYLiSIM: Non-Homogeneous YuLe SIMulator',  # Required
-    long_description='NiHYLiSIM: Non-Homogeneous YuLe SIMulator',  # Optional
+    name='treesap',  # Required
+    version='1.0.0',  # Required
+    description='TreeSAP: Tree SAmpling under Phylogenetic models',  # Required
+    long_description='TreeSAP: Tree SAmpling under Phylogenetic models',  # Optional
     long_description_content_type='text/plain',  # Optional (see note above)
-    url='https://github.com/niemasd/NiHYLiSIM',  # Optional
+    url='https://github.com/niemasd/TreeSAP',  # Optional
     author='Niema Moshiri',  # Optional
     author_email='niemamoshiri@gmail.com',  # Optional
     classifiers=[  # Optional
@@ -51,7 +51,7 @@ setup(
         'dev': ['check-manifest'],
     },
     project_urls={  # Optional
-        'Bug Reports': 'https://github.com/niemasd/NiHYLiSIM/issues',
-        'Source': 'https://github.com/niemasd/NiHYLiSIM',
+        'Bug Reports': 'https://github.com/niemasd/TreeSAP/issues',
+        'Source': 'https://github.com/niemasd/TreeSAP',
     },
 )
