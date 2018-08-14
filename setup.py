@@ -14,7 +14,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 setup(
     name='treesap',  # Required
-    version='1.0.0',  # Required
+    version='1.0.1',  # Required
     description='TreeSAP: Tree SAmpling under Phylogenetic models',  # Required
     long_description='TreeSAP: Tree SAmpling under Phylogenetic models',  # Optional
     long_description_content_type='text/plain',  # Optional (see note above)
