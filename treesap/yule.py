@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
+from .common import check_end_conditions
 from numpy.random import exponential
 from random import randint
 from treeswift import Node,Tree
-try:
-    from treesap.common import check_end_conditions
-except:
-    from .common import check_end_conditions
 
 # sample a Yule tree with speciation rate L
 def yule_tree(L, end_num_leaves=float('inf'), end_time=float('inf')):

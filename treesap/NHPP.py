@@ -3,12 +3,11 @@ from math import exp
 from scipy.stats import rv_continuous
 from scipy.integrate import quad as integral
 from treeswift import Node,Tree
+from .common import check_end_conditions
 try:
     from Queue import PriorityQueue  # ver. < 3.0
-    from treesap.common import check_end_conditions
 except ImportError:
     from queue import PriorityQueue
-    from .common import check_end_conditions
 
 # PDF of first interarrival time of non-homogeneous Poisson process with rate function L(t)
 class NHPP_first_interarrival_time(rv_continuous):

@@ -38,13 +38,10 @@
             
   <h1>Source code for treesap.yule</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">check_end_conditions</span>
 <span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">exponential</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">randint</span>
 <span class="kn">from</span> <span class="nn">treeswift</span> <span class="k">import</span> <span class="n">Node</span><span class="p">,</span><span class="n">Tree</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">treesap.common</span> <span class="k">import</span> <span class="n">check_end_conditions</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">check_end_conditions</span>
 
 <span class="c1"># sample a Yule tree with speciation rate L</span>
 <div class="viewcode-block" id="yule_tree"><a class="viewcode-back" href="../../index.html#treesap.yule_tree">[docs]</a><span class="k">def</span> <span class="nf">yule_tree</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">end_num_leaves</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)):</span>

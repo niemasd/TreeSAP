@@ -42,12 +42,11 @@
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">rv_continuous</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">quad</span> <span class="k">as</span> <span class="n">integral</span>
 <span class="kn">from</span> <span class="nn">treeswift</span> <span class="k">import</span> <span class="n">Node</span><span class="p">,</span><span class="n">Tree</span>
+<span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">check_end_conditions</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">Queue</span> <span class="k">import</span> <span class="n">PriorityQueue</span>  <span class="c1"># ver. &lt; 3.0</span>
-    <span class="kn">from</span> <span class="nn">treesap.common</span> <span class="k">import</span> <span class="n">check_end_conditions</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">queue</span> <span class="k">import</span> <span class="n">PriorityQueue</span>
-    <span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">check_end_conditions</span>
 
 <span class="c1"># PDF of first interarrival time of non-homogeneous Poisson process with rate function L(t)</span>
 <span class="k">class</span> <span class="nc">NHPP_first_interarrival_time</span><span class="p">(</span><span class="n">rv_continuous</span><span class="p">):</span>
