@@ -46,7 +46,7 @@ setup(
     ],
     keywords='non homogeneous yule simulator',  # Optional
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),  # Required
-    install_requires=['scipy','treeswift'],
+    install_requires=['numpy','scipy','treeswift'],
     extras_require={  # Optional
         'dev': ['check-manifest'],
     },
