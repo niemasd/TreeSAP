@@ -41,6 +41,20 @@
 <div class="section" id="module-treesap">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-treesap" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="treesap.discrete_const_pop_coalescent_tree">
+<code class="descclassname">treesap.</code><code class="descname">discrete_const_pop_coalescent_tree</code><span class="sig-paren">(</span><em>pop_size</em>, <em>num_leaves</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treesap/coalescent.html#discrete_const_pop_coalescent_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treesap.discrete_const_pop_coalescent_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a discrete-time coalescent tree with a constant population size`. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first"><code class="docutils literal notranslate"><span class="pre">pop_size</span></code> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): The population size</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">num_leaves</span></code> (<code class="docutils literal notranslate"><span class="pre">int</span></code>): The final number of leaves</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A <code class="docutils literal notranslate"><span class="pre">Tree</span></code> object storing the sampled coalescent tree</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="treesap.dualbirth_tree">
 <code class="descclassname">treesap.</code><code class="descname">dualbirth_tree</code><span class="sig-paren">(</span><em>La</em>, <em>Lb</em>, <em>end_num_leaves=inf</em>, <em>end_time=inf</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treesap/dualbirth.html#dualbirth_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treesap.dualbirth_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a Dual-Birth tree with activation rate La and birth rate Lb. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</p>
