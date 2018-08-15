@@ -48,7 +48,6 @@
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">queue</span> <span class="k">import</span> <span class="n">PriorityQueue</span>
 
-<span class="c1"># PDF of first interarrival time of non-homogeneous Poisson process with rate function L(t)</span>
 <span class="k">class</span> <span class="nc">NHPP_first_interarrival_time</span><span class="p">(</span><span class="n">rv_continuous</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Random variable class for T = first interarrival time of a NHPP with rate function L(t)&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">set_L</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
@@ -80,7 +79,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">check_L</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">integral</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="c1"># sample a non-homogeneous Yule tree with speciation rate function L(t)</span>
 <div class="viewcode-block" id="nonhomogeneous_yule_tree"><a class="viewcode-back" href="../../index.html#treesap.nonhomogeneous_yule_tree">[docs]</a><span class="k">def</span> <span class="nf">nonhomogeneous_yule_tree</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">end_num_leaves</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)):</span>
     <span class="sd">&#39;&#39;&#39;Sample a non-homogeneous Yule tree with speciation rate function L(t). If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</span>
 

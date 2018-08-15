@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 from .common import Set
-from numpy.random import geometric
+from numpy.random import exponential,geometric
 from random import randint
 from treeswift import Node,Tree
 
-# sample a Yule tree with speciation rate L
-def discrete_const_pop_coalescent_tree(pop_size, num_leaves):
-    '''Sample a discrete-time coalescent tree with a constant population size`. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.
+def coalescent_const_pop_tree(pop_size, num_leaves, continuous=True):
+    '''Sample a coalescent tree with a constant population size`. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.
 
     Args:
         ``pop_size`` (``float``): The population size
 
         ``num_leaves`` (``int``): The final number of leaves
+
+        ``continuous`` (``bool``): ``True`` to simulate a continuous-time coalescent tree, or ``False`` to simulate a discrete-time coalescent tree
 
     Returns:
         A ``Tree`` object storing the sampled coalescent tree
@@ -28,7 +29,10 @@ def discrete_const_pop_coalescent_tree(pop_size, num_leaves):
     for i in range(num_leaves):
         node = Node(label=i); time[node] = 0; leaves.add(node)
     while len(leaves) != 1:
-        t += geometric((len(leaves)*(len(leaves)-1))/(2*pop_size))
+        if continuous:
+            t += exponential((2*pop_size)/(len(leaves)*(len(leaves)-1)))
+        else:
+            t += geometric((len(leaves)*(len(leaves)-1))/(2*pop_size))
         p = Node(); time[p] = t
         n1 = leaves.random(); leaves.remove(n1)
         n2 = leaves.random(); leaves.remove(n2)
@@ -38,3 +42,5 @@ def discrete_const_pop_coalescent_tree(pop_size, num_leaves):
         if not node.is_root():
             node.edge_length = time[node.parent] - time[node]
     return tree
+
+

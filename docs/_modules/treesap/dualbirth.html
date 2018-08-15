@@ -43,7 +43,6 @@
 <span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">randint</span><span class="p">,</span><span class="n">random</span>
 <span class="kn">from</span> <span class="nn">treeswift</span> <span class="k">import</span> <span class="n">Node</span><span class="p">,</span><span class="n">Tree</span>
 
-<span class="c1"># sample a Yule tree with speciation rate L</span>
 <div class="viewcode-block" id="dualbirth_tree"><a class="viewcode-back" href="../../index.html#treesap.dualbirth_tree">[docs]</a><span class="k">def</span> <span class="nf">dualbirth_tree</span><span class="p">(</span><span class="n">La</span><span class="p">,</span> <span class="n">Lb</span><span class="p">,</span> <span class="n">end_num_leaves</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">),</span> <span class="n">end_time</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)):</span>
     <span class="sd">&#39;&#39;&#39;Sample a Dual-Birth tree with activation rate La and birth rate Lb. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</span>
 
