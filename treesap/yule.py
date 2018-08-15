@@ -34,9 +34,10 @@ def yule_tree(L, end_num_leaves=float('inf'), end_time=float('inf')):
         t += exponential(scale=B/len(leaves))
     if t > end_time:
         t = end_time
-    while len(leaves) != 0:
-        node = leaves.pop(); time[node] = t; node.label = len(leaves)
-    for node in tree.traverse_preorder():
+    i = 0
+    for node in tree.traverse_postorder():
+        if node.is_leaf():
+            time[node] = t; node.label = i; i+= 1
         if node.is_root():
             node.edge_length = time[node]
         else:
