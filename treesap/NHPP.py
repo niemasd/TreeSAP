@@ -63,7 +63,7 @@ def nonhomogeneous_yule_tree(L, end_num_leaves=float('inf'), end_time=float('inf
     pq = PriorityQueue(); pq.put((time[tree.root],tree.root))
     while True:
         curr_time,node = pq.get()
-        if num_leaves == end_num_leaves or (end_time is not None and curr_time > end_time):
+        if num_leaves == end_num_leaves or curr_time > end_time:
             break
         rv = NHPP_first_interarrival_time(a=0); rv.set_L(lambda x: L(x + time[node])); lengths = rv.rvs(size=2)
         for i in range(2):
@@ -71,8 +71,7 @@ def nonhomogeneous_yule_tree(L, end_num_leaves=float('inf'), end_time=float('inf
             time[child] = time[node] + lengths[i]
             pq.put((time[child],child))
         num_leaves += 1
-    if end_time is not None:
-        curr_time = min(curr_time,end_time)
+    curr_time = min(curr_time,end_time)
     for node in tree.traverse_preorder():
         if node.is_leaf():
             node.label = str(num_leaves); num_leaves -= 1; time[node] = curr_time
