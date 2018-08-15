@@ -9,7 +9,6 @@ try:
 except ImportError:
     from queue import PriorityQueue
 
-# PDF of first interarrival time of non-homogeneous Poisson process with rate function L(t)
 class NHPP_first_interarrival_time(rv_continuous):
     '''Random variable class for T = first interarrival time of a NHPP with rate function L(t)'''
     def set_L(self, L):
@@ -41,7 +40,6 @@ class NHPP_first_interarrival_time(rv_continuous):
         self.check_L()
         return self.L(x) * exp(-integral(self.L,0,x)[0])
 
-# sample a non-homogeneous Yule tree with speciation rate function L(t)
 def nonhomogeneous_yule_tree(L, end_num_leaves=float('inf'), end_time=float('inf')):
     '''Sample a non-homogeneous Yule tree with speciation rate function L(t). If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.
 

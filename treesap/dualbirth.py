@@ -4,7 +4,6 @@ from numpy.random import exponential
 from random import randint,random
 from treeswift import Node,Tree
 
-# sample a Yule tree with speciation rate L
 def dualbirth_tree(La, Lb, end_num_leaves=float('inf'), end_time=float('inf')):
     '''Sample a Dual-Birth tree with activation rate La and birth rate Lb. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.
 
