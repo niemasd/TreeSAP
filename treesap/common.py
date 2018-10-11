@@ -58,6 +58,14 @@ class Set:
         assert len(self.a) != 0, "Calling random() on an empty set"
         return self.a[randint(0,len(self.a)-1)]
 
+    def pop(self):
+        '''Remove and return a random (not arbitrary) element from this set. Equivalent to calling random() and then remove()
+
+        Returns:
+            A random element from this set
+        '''
+        out = self.random(); self.remove(out); return out
+
 def check_end_conditions(end_num_leaves, end_time):
     '''Check end_num_leaves and end_time parameters'''
     if end_num_leaves == float('inf') and end_time == float('inf'):
@@ -70,3 +78,13 @@ def check_end_conditions(end_num_leaves, end_time):
         raise TypeError("end_time must be a float")
     if end_time <= 0:
         raise ValueError("end_time must be positive")
+
+def check_transmission_event(e):
+    if not isinstance(e,tuple) and not isinstance(e,list):
+        raise TypeError("transmission_network must be a list of tuples")
+    if len(e) != 3:
+        raise ValueError("transmission_network must be a list of tuples of length 3")
+    if not isinstance(e[2],float) and not isinstance(e[2],int):
+        raise ValueError("The times of the tuples in transmission_network must be floats")
+    if e[0] == e[1]:
+        raise ValueError("Encountered transmission event with two identical individuals")

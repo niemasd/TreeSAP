@@ -58,6 +58,21 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="treesap.coalescent_const_pop_tree">
+<code class="descclassname">treesap.</code><code class="descname">coalescent_const_pop_tree</code><span class="sig-paren">(</span><em>pop_size</em>, <em>num_leaves</em>, <em>continuous=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treesap/coalescent.html#coalescent_const_pop_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treesap.coalescent_const_pop_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a coalescent tree with a constant population size`. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first"><code class="docutils literal notranslate"><span class="pre">pop_size</span></code> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): The population size</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_leaves</span></code> (<code class="docutils literal notranslate"><span class="pre">int</span></code>): The final number of leaves</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">continuous</span></code> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>): <code class="docutils literal notranslate"><span class="pre">True</span></code> to simulate a continuous-time coalescent tree, or <code class="docutils literal notranslate"><span class="pre">False</span></code> to simulate a discrete-time coalescent tree</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A <code class="docutils literal notranslate"><span class="pre">Tree</span></code> object storing the sampled coalescent tree</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
 <dt id="treesap.dualbirth_tree">
 <code class="descclassname">treesap.</code><code class="descname">dualbirth_tree</code><span class="sig-paren">(</span><em>La</em>, <em>Lb</em>, <em>end_num_leaves=inf</em>, <em>end_time=inf</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treesap/dualbirth.html#dualbirth_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treesap.dualbirth_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample a Dual-Birth tree with activation rate La and birth rate Lb. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</p>
@@ -85,6 +100,21 @@
 </dd>
 <dt>Returns:</dt>
 <dd>A <code class="docutils literal notranslate"><span class="pre">Tree</span></code> object storing the sampled non-homogeneous Yule tree</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="treesap.transmission_neutral_coalescent_tree">
+<code class="descclassname">treesap.</code><code class="descname">transmission_neutral_coalescent_tree</code><span class="sig-paren">(</span><em>transmission_network</em>, <em>sample_times</em>, <em>rate=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treesap/transmission_neutral_coalescent.html#transmission_neutral_coalescent_tree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treesap.transmission_neutral_coalescent_tree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a tree under the pure-neutral coalescent model constrained to a given transmission network with given patient sampling times.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first"><code class="docutils literal notranslate"><span class="pre">transmission_network</span></code> (<code class="docutils literal notranslate"><span class="pre">list</span></code>): The transmission network as a <code class="docutils literal notranslate"><span class="pre">list</span></code> of <code class="docutils literal notranslate"><span class="pre">(u,v,t)</span></code> tuples denoting the transmission from <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> at time <code class="docutils literal notranslate"><span class="pre">t</span></code>. The transmission network must be sorted in ascending order of time</p>
+<p><code class="docutils literal notranslate"><span class="pre">sample_times</span></code> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>): The times at which each individual was sampled (i.e., the times of the leaves) as a <code class="docutils literal notranslate"><span class="pre">dict</span></code> in which keys are individuals from <code class="docutils literal notranslate"><span class="pre">transmission_network</span></code> and the value associated with an individual <code class="docutils literal notranslate"><span class="pre">u</span></code> is a <code class="docutils literal notranslate"><span class="pre">list</span></code> of times at which <code class="docutils literal notranslate"><span class="pre">u</span></code> was sampled (i.e., the times of the leaves from individual <code class="docutils literal notranslate"><span class="pre">u</span></code>)</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">rate</span></code> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): The rate of the Poisson process of coalescing two lineages</p>
+</dd>
+<dt>Returns:</dt>
+<dd>A <code class="docutils literal notranslate"><span class="pre">Tree</span></code> object storing the sampled pure-neutral tree, where leaves are labeled <code class="docutils literal notranslate"><span class="pre">ID|u|t</span></code>, where <code class="docutils literal notranslate"><span class="pre">ID</span></code> is a unique identifier for the leaf, <code class="docutils literal notranslate"><span class="pre">u</span></code> is the corresponding individual from <code class="docutils literal notranslate"><span class="pre">transmission_network</span></code>, and <code class="docutils literal notranslate"><span class="pre">t</span></code> is the sample time (which equals the leaf’s distance from the root). If there are multiple seed individuals (infected beforehand), a tree will be output for each.</dd>
 </dl>
 </dd></dl>
 

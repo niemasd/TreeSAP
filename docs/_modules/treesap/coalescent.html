@@ -39,18 +39,19 @@
   <h1>Source code for treesap.coalescent</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/env python3</span>
 <span class="kn">from</span> <span class="nn">.common</span> <span class="k">import</span> <span class="n">Set</span>
-<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">geometric</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="k">import</span> <span class="n">exponential</span><span class="p">,</span><span class="n">geometric</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">randint</span>
 <span class="kn">from</span> <span class="nn">treeswift</span> <span class="k">import</span> <span class="n">Node</span><span class="p">,</span><span class="n">Tree</span>
 
-<span class="c1"># sample a Yule tree with speciation rate L</span>
-<div class="viewcode-block" id="discrete_const_pop_coalescent_tree"><a class="viewcode-back" href="../../index.html#treesap.discrete_const_pop_coalescent_tree">[docs]</a><span class="k">def</span> <span class="nf">discrete_const_pop_coalescent_tree</span><span class="p">(</span><span class="n">pop_size</span><span class="p">,</span> <span class="n">num_leaves</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Sample a discrete-time coalescent tree with a constant population size`. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</span>
+<div class="viewcode-block" id="coalescent_const_pop_tree"><a class="viewcode-back" href="../../index.html#treesap.coalescent_const_pop_tree">[docs]</a><span class="k">def</span> <span class="nf">coalescent_const_pop_tree</span><span class="p">(</span><span class="n">pop_size</span><span class="p">,</span> <span class="n">num_leaves</span><span class="p">,</span> <span class="n">continuous</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sample a coalescent tree with a constant population size`. If both an end number of leaves and an end time are specified, the tree sampling will terminate when the first of the two is reached.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        ``pop_size`` (``float``): The population size</span>
 
 <span class="sd">        ``num_leaves`` (``int``): The final number of leaves</span>
+
+<span class="sd">        ``continuous`` (``bool``): ``True`` to simulate a continuous-time coalescent tree, or ``False`` to simulate a discrete-time coalescent tree</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        A ``Tree`` object storing the sampled coalescent tree</span>
@@ -67,7 +68,10 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_leaves</span><span class="p">):</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">i</span><span class="p">);</span> <span class="n">time</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">leaves</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">t</span> <span class="o">+=</span> <span class="n">geometric</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pop_size</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">continuous</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">+=</span> <span class="n">exponential</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">pop_size</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">+=</span> <span class="n">geometric</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">leaves</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pop_size</span><span class="p">))</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">Node</span><span class="p">();</span> <span class="n">time</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
         <span class="n">n1</span> <span class="o">=</span> <span class="n">leaves</span><span class="o">.</span><span class="n">random</span><span class="p">();</span> <span class="n">leaves</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
         <span class="n">n2</span> <span class="o">=</span> <span class="n">leaves</span><span class="o">.</span><span class="n">random</span><span class="p">();</span> <span class="n">leaves</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
@@ -77,6 +81,8 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">is_root</span><span class="p">():</span>
             <span class="n">node</span><span class="o">.</span><span class="n">edge_length</span> <span class="o">=</span> <span class="n">time</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="p">]</span> <span class="o">-</span> <span class="n">time</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">tree</span></div>
+
+
 </pre></div>
 
           </div>
